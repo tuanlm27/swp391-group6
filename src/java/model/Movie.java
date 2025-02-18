@@ -11,7 +11,7 @@ public class Movie {
     private String description;
 
     // Constructor
-    public Movie(int movieID, String title, String genre, int duration, Date releaseDate, String description) {
+    public Movie(int movieID, String title, String genre, int duration, String description, String description1) {
         this.movieID = movieID;
         this.title = title;
         this.genre = genre;

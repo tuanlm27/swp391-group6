@@ -14,33 +14,36 @@
         <title>Movie List</title>
     </head>
     <body>
-        <h1>Movie List</h1>
         <table border="1">
-            <tr>
-                <th>Movie ID</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Duration</th>
-                <th>Release Date</th>
-                <th>Description</th>
-            </tr>
-            <%
-                List<Movie> movies = (List<Movie>) request.getAttribute("movies");
-                if (movies != null) {
-                    for (Movie movie : movies) {
-            %>
-            <tr>
-                <td><%= movie.getMovieID() %></td>
-                <td><%= movie.getTitle() %></td>
-                <td><%= movie.getGenre() %></td>
-                <td><%= movie.getDuration() %></td>
-                <td><%= movie.getReleaseDate() %></td>
-                <td><%= movie.getDescription() %></td>
-            </tr>
-            <%
+            <thead>
+                <tr>
+                    <th>Movie ID</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Duration</th>
+                    <th>Release Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    List<Movie> movies = (List<Movie>) request.getAttribute("movies");
+                    if (movies != null) {
+                        for (Movie movie : movies) {
+                %>
+                <tr>
+                    <td><%= movie.getMovieID() %></td>
+                    <td><%= movie.getTitle() %></td>
+                    <td><%= movie.getGenre() %></td>
+                    <td><%= movie.getDuration() %></td>
+                    <td><%= movie.getReleaseDate() %></td>
+                    <td><%= movie.getDescription() %></td>
+                </tr>
+                <%
+                        }
                     }
-                }
-            %>
+                %>
+            </tbody>
         </table>
     </body>
 </html>

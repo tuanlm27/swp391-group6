@@ -29,7 +29,7 @@ public class MovieDAO extends DBContext {
                         rs.getString("Title"),
                         rs.getString("Genre"),
                         rs.getInt("Duration"),
-                        rs.getDate("ReleaseDate"),
+                        rs.getString("Description"),
                         rs.getString("Description")
                 );
                 movies.add(movie);
@@ -80,7 +80,7 @@ public class MovieDAO extends DBContext {
                             rs.getString("Title"),
                             rs.getString("Genre"),
                             rs.getInt("Duration"),
-                            rs.getDate("ReleaseDate"),
+                            rs.getString("Description"),
                             rs.getString("Description")
                     );
                 }
@@ -109,7 +109,7 @@ public class MovieDAO extends DBContext {
                             rs.getString("Title"),
                             rs.getString("Genre"),
                             rs.getInt("Duration"),
-                            rs.getDate("ReleaseDate"),
+                            rs.getString("Description"),
                             rs.getString("Description")
                     );
                     movies.add(movie);
@@ -139,7 +139,7 @@ public class MovieDAO extends DBContext {
                             rs.getString("Title"),
                             rs.getString("Genre"),
                             rs.getInt("Duration"),
-                            rs.getDate("ReleaseDate"),
+                            rs.getString("Description"),
                             rs.getString("Description")
                     );
                     movies.add(movie);
