@@ -172,7 +172,7 @@ public class AdminDAO extends DBContext {
             ps.setString(1, admin.getName());
             ps.setString(2, admin.getEmail());
             ps.setString(3, admin.getPassword());
-            ps.setInt(4, admin.getId());
+            ps.setInt(4, admin.getAdminID());
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException ex) {
@@ -205,7 +205,7 @@ public class AdminDAO extends DBContext {
 
     public static void main(String[] args) {
         AdminDAO dao = new AdminDAO();
-        System.out.println(dao.getAdminByID(1));
+        System.out.println(dao.getAdminByID(2));
     }
 }
 

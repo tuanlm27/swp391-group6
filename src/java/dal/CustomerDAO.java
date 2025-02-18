@@ -166,11 +166,11 @@ public class CustomerDAO extends DBContext {
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, customer.getPhone());
-            ps.setString(2, customer.getName());
+            ps.setString(2, customer.getCustomerName());
             ps.setString(3, customer.getPassword());
             ps.setString(4, customer.getEmail());
             ps.setString(5, customer.getAddress());
-            ps.setInt(6, customer.getId());
+            ps.setInt(6, customer.getCustomerID());
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException ex) {
@@ -200,7 +200,7 @@ public class CustomerDAO extends DBContext {
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
         try {
-            System.out.println(dao.getCustomerByID(2));
+            System.out.println(dao.getCustomerByID(1));
         } catch (Exception ex) {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,14 +5,13 @@
 package model;
 
 /**
- *
- * @author tovie
+ * Customer model class
  */
 public class Customer {
 
-    private int id;
+    private int customerID;
     private String phone;
-    private String name;
+    private String customerName;
     private String password;
     private String email;
     private String address;
@@ -20,21 +19,21 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String phone, String name, String password, String email, String address) {
-        this.id = id;
+    public Customer(int customerID, String phone, String customerName, String password, String email, String address) {
+        this.customerID = customerID;
         this.phone = phone;
-        this.name = name;
+        this.customerName = customerName;
         this.password = password;
         this.email = email;
         this.address = address;
     }
 
-    public int getId() {
-        return id;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public String getPhone() {
@@ -45,12 +44,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getPassword() {
@@ -79,7 +78,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", phone=" + phone + ", name=" + name + ", password=" + password + ", email=" + email + ", address=" + address + '}';
+        return "Customer{" + "customerID=" + customerID + ", phone=" + phone + ", customerName=" + customerName + ", password=" + password + ", email=" + email + ", address=" + address + '}';
     }
 
+    
 }

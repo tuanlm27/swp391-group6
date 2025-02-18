@@ -53,8 +53,18 @@ public class LoginController extends HttpServlet {
 
         CustomerDAO customerDAO = new CustomerDAO();
         AdminDAO adminDAO = new AdminDAO();
-        Customer customer = customerDAO.getCustomerByName(username);
-        Admin admin = adminDAO.getAdminByName(username);
+        Customer customer = null;
+        Admin admin = null;
+
+        try {
+            customer = customerDAO.getCustomerByName(username);
+            admin = adminDAO.getAdminByName(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "An error occurred while processing your request. Please try again.");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            return;
+        }
 
         if (customer != null && customer.getPassword().equals(password)) {
             HttpSession session = request.getSession();

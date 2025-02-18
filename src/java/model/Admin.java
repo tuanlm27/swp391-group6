@@ -5,11 +5,10 @@
 package model;
 
 /**
- *
- * @author tovie
+ * Admin model class
  */
 public class Admin {
-    private int id;
+    private int adminID;
     private String name;
     private String email;
     private String password;
@@ -17,19 +16,19 @@ public class Admin {
     public Admin() {
     }
 
-    public Admin(int id, String name, String email, String password) {
-        this.id = id;
+    public Admin(int adminID, String name, String email, String password) {
+        this.adminID = adminID;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public int getId() {
-        return id;
+    public int getAdminID() {
+        return adminID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
     }
 
     public String getName() {
@@ -58,8 +57,8 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + '}';
+        return "Admin{" + "adminID=" + adminID + ", name=" + name + ", email=" + email + ", password=" + password + '}';
     }
-    
+
     
 }

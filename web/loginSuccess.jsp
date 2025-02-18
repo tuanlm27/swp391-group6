@@ -1,17 +1,12 @@
-<%-- 
-    Document   : loginSuccess
-    Created on : Feb 11, 2025, 1:31:03 PM
-    Author     : tovie
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!-- filepath: /c:/Users/tovie/OneDrive/Documents/GitHub/swp391-group6/web/CustomerDashboard.jsp -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Login Successfull</h1>
-    </body>
+<head>
+    <title>Customer Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, Customer!</h1>
+    <a href="logout">Logout</a>
+</body>
 </html>
