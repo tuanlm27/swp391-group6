@@ -1,17 +1,24 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package model;
 
-import java.sql.Date;
-
+/**
+ * Movie model class
+ */
 public class Movie {
     private int movieID;
     private String title;
     private String genre;
     private int duration;
-    private Date releaseDate;
+    private String releaseDate;
     private String description;
 
-    // Constructor
-    public Movie(int movieID, String title, String genre, int duration, String description, String description1) {
+    public Movie() {
+    }
+
+    public Movie(int movieID, String title, String genre, int duration, String releaseDate, String description) {
         this.movieID = movieID;
         this.title = title;
         this.genre = genre;
@@ -20,7 +27,6 @@ public class Movie {
         this.description = description;
     }
 
-    // Getters and Setters
     public int getMovieID() {
         return movieID;
     }
@@ -53,11 +59,11 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -73,5 +79,4 @@ public class Movie {
     public String toString() {
         return "Movie{" + "movieID=" + movieID + ", title=" + title + ", genre=" + genre + ", duration=" + duration + ", releaseDate=" + releaseDate + ", description=" + description + '}';
     }
-
-   }
+}
