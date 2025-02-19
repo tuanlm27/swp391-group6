@@ -6,9 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Movie"%>
-<%
-    Movie movie = (Movie) request.getAttribute("movie");
-%>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -5,11 +5,8 @@
 
 package controller;
 
-import dal.MovieDAO;
-import model.Movie;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,12 +14,38 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MovieServletController
+ *
+ * @author tovie
  */
 @WebServlet(name="MovieServletController", urlPatterns={"/movie"})
 public class MovieServletController extends HttpServlet {
    
-    /**
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet MovieServletController</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet MovieServletController at " + request.getContextPath () + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    } 
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /** 
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -32,7 +55,7 @@ public class MovieServletController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        // Handle GET requests here if needed
+        processRequest(request, response);
     } 
 
     /** 
@@ -45,37 +68,7 @@ public class MovieServletController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String title = request.getParameter("title");
-        String genre = request.getParameter("genre");
-        int duration = Integer.parseInt(request.getParameter("duration"));
-        String releaseDate = request.getParameter("releaseDate");
-        String description = request.getParameter("description");
-        
-        Movie movie = new Movie(0, title, genre, duration, releaseDate, description);
-        MovieDAO movieDAO = new MovieDAO();
-        boolean isAdded = false;
-        try {
-            isAdded = movieDAO.addMovie(movie);
-        } catch (Exception ex) {
-            Logger.getLogger(MovieServletController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Movie Addition Result</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            if (isAdded) {
-                out.println("<h1>Movie added successfully!</h1>");
-            } else {
-                out.println("<h1>Failed to add movie.</h1>");
-            }
-            out.println("<a href='addMovieForm.jsp'>Go back to add movie form</a>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        processRequest(request, response);
     }
 
     /** 

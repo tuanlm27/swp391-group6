@@ -210,10 +210,21 @@ public class MovieDAO extends DBContext {
         return -1;
     }
 
+    /**
+     * Retrieves a movie by details
+     * @param title Movie title
+     * @param genre Movie genre
+     * @param duration Movie duration
+     * @param releaseDate Movie release date
+     * @param description Movie description
+     * @return Movie object
+     */
+    
+
     public static void main(String[] args) {
         MovieDAO dao = new MovieDAO();
         try {
-            System.out.println(dao.getMovieByID(3));
+            System.out.println(dao.getMovieByID(1));
         } catch (Exception ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
