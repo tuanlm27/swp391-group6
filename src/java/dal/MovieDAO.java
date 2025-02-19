@@ -29,7 +29,7 @@ public class MovieDAO extends DBContext {
                         rs.getString("Title"),
                         rs.getString("Genre"),
                         rs.getInt("Duration"),
-                        rs.getString("Description"),
+                        rs.getDate("ReleaseDate").toString(),
                         rs.getString("Description")
                 );
                 movies.add(movie);
@@ -48,11 +48,11 @@ public class MovieDAO extends DBContext {
     public boolean addMovie(Movie movie) throws Exception {
         String sql = "INSERT INTO Movie (Title, Genre, Duration, ReleaseDate, Description) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, movie.getTitle());
             ps.setString(2, movie.getGenre());
             ps.setInt(3, movie.getDuration());
-            ps.setDate(4, movie.getReleaseDate());
+            ps.setDate(4, Date.valueOf(movie.getReleaseDate()));
             ps.setString(5, movie.getDescription());
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -80,7 +80,7 @@ public class MovieDAO extends DBContext {
                             rs.getString("Title"),
                             rs.getString("Genre"),
                             rs.getInt("Duration"),
-                            rs.getString("Description"),
+                            rs.getDate("ReleaseDate").toString(),
                             rs.getString("Description")
                     );
                 }
@@ -109,7 +109,7 @@ public class MovieDAO extends DBContext {
                             rs.getString("Title"),
                             rs.getString("Genre"),
                             rs.getInt("Duration"),
-                            rs.getString("Description"),
+                            rs.getDate("ReleaseDate").toString(),
                             rs.getString("Description")
                     );
                     movies.add(movie);
@@ -139,7 +139,7 @@ public class MovieDAO extends DBContext {
                             rs.getString("Title"),
                             rs.getString("Genre"),
                             rs.getInt("Duration"),
-                            rs.getString("Description"),
+                            rs.getDate("ReleaseDate").toString(),
                             rs.getString("Description")
                     );
                     movies.add(movie);
@@ -163,7 +163,7 @@ public class MovieDAO extends DBContext {
             ps.setString(1, movie.getTitle());
             ps.setString(2, movie.getGenre());
             ps.setInt(3, movie.getDuration());
-            ps.setDate(4, movie.getReleaseDate());
+            ps.setDate(4, Date.valueOf(movie.getReleaseDate()));
             ps.setString(5, movie.getDescription());
             ps.setInt(6, movie.getMovieID());
             int rowsAffected = ps.executeUpdate();
@@ -192,10 +192,28 @@ public class MovieDAO extends DBContext {
         return false;
     }
 
+    /**
+     * Retrieves the ID of the last inserted movie
+     * @return the ID of the last inserted movie
+     */
+    public int getLastInsertedMovieID() throws Exception {
+        String sql = "SELECT MAX(MovieID) AS LastID FROM Movie";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("LastID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         MovieDAO dao = new MovieDAO();
         try {
-            System.out.println(dao.getMovieByID(1));
+            System.out.println(dao.getMovieByID(3));
         } catch (Exception ex) {
             Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
